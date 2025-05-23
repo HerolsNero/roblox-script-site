@@ -1,2 +1,2 @@
--- Wave Executor
-print('Loaded Wave Executor')
+-- Example script
+print('Script loaded')

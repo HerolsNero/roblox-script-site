@@ -1,2 +1,2 @@
--- Paid Auto Farm Pro
-print('Loaded Paid Auto Farm Pro')
+-- Example script
+print('Script loaded')
