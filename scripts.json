@@ -1,0 +1,26 @@
+[
+  {
+    "title": "AWP.GG Executor",
+    "description": "Fast and stable Roblox executor with custom UI.",
+    "category": "executors",
+    "file": "awp_executor.lua",
+    "thumbnail": "executor1.png",
+    "date": "May 2025"
+  },
+  {
+    "title": "Wave Executor",
+    "description": "User-friendly executor supporting most Roblox games.",
+    "category": "executors",
+    "file": "wave_executor.lua",
+    "thumbnail": "executor2.png",
+    "date": "May 2025"
+  },
+  {
+    "title": "Paid Auto Farm Pro",
+    "description": "Premium auto farm script with GUI and custom config.",
+    "category": "paid",
+    "file": "paid_auto_farm.lua",
+    "thumbnail": "paid_script.png",
+    "date": "May 2025"
+  }
+]
