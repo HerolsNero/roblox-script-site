@@ -1,38 +1,39 @@
-<div class="container" id="script-container">
-  <!-- Script cards will be inserted here dynamically -->
-</div>
-
-<div class="ad-slot">
-  <ins class="adsbygoogle"
-    style="display:block"
-    data-ad-client="ca-pub-1357040621280062"
-    data-ad-slot="6085200614"
-    data-ad-format="auto"
-    data-full-width-responsive="true"></ins>
-  <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-</div>
-
 <script>
   function downloadScript(fileName) {
     window.location.href = `/scripts/${fileName}`;
   }
 
-  // Load scripts from JSON and insert into DOM
   fetch('scripts.json')
     .then(response => response.json())
     .then(scripts => {
       const container = document.getElementById('script-container');
+      const categories = {};
+
+      // Group scripts by category
       scripts.forEach(script => {
-        const card = document.createElement('div');
-        card.className = 'script-card';
-        card.innerHTML = `
-          <h3>${script.title}</h3>
-          <p>${script.description}</p>
-          <button onclick="downloadScript('${script.file}')">Download</button>
-        `;
-        container.appendChild(card);
+        if (!categories[script.category]) {
+          categories[script.category] = [];
+        }
+        categories[script.category].push(script);
+      });
+
+      // Render each category
+      Object.keys(categories).forEach(category => {
+        const categoryHeader = document.createElement('h2');
+        categoryHeader.textContent = category;
+        categoryHeader.style.marginTop = '2rem';
+        container.appendChild(categoryHeader);
+
+        categories[category].forEach(script => {
+          const card = document.createElement('div');
+          card.className = 'script-card';
+          card.innerHTML = `
+            <h3>${script.title} ${script.featured ? '⭐' : ''}</h3>
+            <p>${script.description}</p>
+            <button onclick="downloadScript('${script.file}')">Download</button>
+          `;
+          container.appendChild(card);
+        });
       });
     })
     .catch(error => {
