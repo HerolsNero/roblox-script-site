@@ -1,23 +1,18 @@
 [
   {
-    "title": "Auto Farm",
-    "description": "Automatically farms items in the game.",
-    "file": "auto-farm.lua",
-    "category": "utilities",
-    "featured": true
+    "title": "Grow a Garden - Blackhub",
+    "description": "Auto Farm, Auto Buy, Auto Feed Pets, Auto Sell, Teleport & More",
+    "category": "Grow a Garden",
+    "file": "grow_garden_blackhub.lua",
+    "thumbnail": "40866e7a-2186-4616-81ab-4629134ca767.png",
+    "date": "May 22, 2025"
   },
   {
-    "title": "ESP Script",
-    "description": "Wallhack and player ESP.",
-    "file": "esp.lua",
-    "category": "utilities",
-    "featured": false
-  },
-  {
-    "title": "Fly Hack",
-    "description": "Enables flying in any game.",
-    "file": "fly.lua",
-    "category": "utilities",
-    "featured": false
+    "title": "Dead Rails - Hung Hub",
+    "description": "Auto Farm Bonds, Aimbot, Teleport, Visual ESP & More",
+    "category": "Dead Rails",
+    "file": "dead_rails_hung_hub.lua",
+    "thumbnail": "40866e7a-2186-4616-81ab-4629134ca767.png",
+    "date": "May 11, 2025"
   }
 ]
