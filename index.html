@@ -74,9 +74,9 @@
 <body>
   <header>Roblox Script Hub</header>
   <nav>
-    <a href="#utilities">Utilities</a>
-    <a href="#ui">UI Scripts</a>
-    <a href="#tools">Tools</a>
+    <a href="#scripts">Scripts</a>
+    <a href="#executor">Executor</a>
+    <a href="#discord">Discord</a>
   </nav>
 
   <div class="container" id="script-container">
@@ -115,7 +115,21 @@
 
         Object.keys(categories).forEach(category => {
           const categoryHeader = document.createElement('h2');
-          categoryHeader.textContent = category;
+          
+          switch (category.toLowerCase()) {
+            case 'utilities':
+              categoryHeader.textContent = 'Scripts';
+              break;
+            case 'ui':
+              categoryHeader.textContent = 'Executor';
+              break;
+            case 'tools':
+              categoryHeader.textContent = 'Discord';
+              break;
+            default:
+              categoryHeader.textContent = category;
+          }
+
           categoryHeader.style.marginTop = '2rem';
           container.appendChild(categoryHeader);
 
