@@ -1,107 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Roblox Script Hub</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #121212;
-      color: #ffffff;
-    }
-    header {
-      background-color: #1f1f1f;
-      padding: 1rem;
-      text-align: center;
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
-    nav {
-      display: flex;
-      justify-content: center;
-      background-color: #222;
-      padding: 0.5rem;
-    }
-    nav a {
-      color: #ddd;
-      margin: 0 1rem;
-      text-decoration: none;
-    }
-    nav a:hover {
-      color: #fff;
-    }
-    .container {
-      padding: 2rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
-    }
-    .script-card {
-      background-color: #1e1e1e;
-      padding: 1rem;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
-    }
-    .script-card h3 {
-      margin-top: 0;
-    }
-    .script-card p {
-      color: #ccc;
-    }
-    .script-card button {
-      background-color: #2979ff;
-      color: #fff;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    .script-card button:hover {
-      background-color: #1565c0;
-    }
-    .ad-slot {
-      background-color: #2a2a2a;
-      text-align: center;
-      padding: 1rem;
-      margin: 1rem 0;
-      border-radius: 6px;
-      color: #888;
-    }
-  </style>
-</head>
-<body>
-  <header>Roblox Script Hub</header>
-  <nav>
-    <a href="#utilities">Utilities</a>
-    <a href="#ui">UI Scripts</a>
-    <a href="#tools">Tools</a>
-  </nav>
+<script>
+  async function loadScripts() {
+    const res = await fetch('scripts.json');
+    const scripts = await res.json();
+    const container = document.getElementById('scriptContainer');
 
-  <div class="container">
-    <div class="script-card">
-      <h3>Teleport Tool</h3>
-      <p>Allows teleportation to specific coordinates. Great for admin scripts.</p>
-      <button onclick="downloadScript('teleport.lua')">Download</button>
-    </div>
+    container.innerHTML = '';
 
-    <div class="script-card">
-      <h3>ESP Utility</h3>
-      <p>Highlight players and NPCs. Useful for debugging AI or player tracking.</p>
-      <button onclick="downloadScript('esp.lua')">Download</button>
-    </div>
-  </div>
+    scripts.forEach(script => {
+      const card = document.createElement('div');
+      card.className = 'script-card';
+      card.setAttribute('data-title', script.title.toLowerCase());
+      card.setAttribute('data-category', script.category.toLowerCase());
 
-  <div class="ad-slot">
-    <!-- Google AdSense or other ad network code here -->
-    [Ad Slot Placeholder]
-  </div>
+      card.innerHTML = `
+        ${script.featured ? '<div class="featured-badge">Featured</div>' : ''}
+        <h3>${script.title}</h3>
+        <p>${script.description}</p>
+        <button onclick="window.location.href='scripts/${script.file}'">Download</button>
+      `;
 
-  <script>
-    function downloadScript(fileName) {
-      window.location.href = `/scripts/${fileName}`;
-    }
-  </script>
-</body>
-</html>
+      container.appendChild(card);
+    });
+  }
+
+  loadScripts();
+
+  // Search filtering
+  const searchInput = document.getElementById('searchInput');
+  searchInput.addEventListener('input', () => {
+    const query = searchInput.value.toLowerCase();
+    document.querySelectorAll('.script-card').forEach(card => {
+      const title = card.getAttribute('data-title');
+      card.style.display = title.includes(query) ? '' : 'none';
+    });
+  });
+</script>
