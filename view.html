@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Script Details</title>
+  <style>
+    body {
+      background-color: #0e0e0e;
+      color: white;
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+    }
+    .script-header {
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+    .script-date {
+      color: #aaa;
+      margin-bottom: 1rem;
+    }
+    img {
+      max-width: 100%;
+      margin-bottom: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+    .features {
+      margin-top: 1rem;
+    }
+    .features ul {
+      padding-left: 1.2rem;
+    }
+    .features li {
+      margin: 0.3rem 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="script-header" id="script-title">Loading title...</div>
+  <div class="script-date" id="script-date">Loading date...</div>
+  <img id="script-image" src="" alt="Script Image">
+  <div class="script-description" id="script-description">Loading description...</div>
+  <div class="features" id="script-features"></div>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const scriptName = urlParams.get('script');
+
+    fetch('scripts.json')
+      .then(res => res.json())
+      .then(scripts => {
+        const script = scripts.find(s => s.title === scriptName);
+        if (script) {
+          document.getElementById('script-title').innerText = script.title;
+          document.getElementById('script-date').innerText = script.date;
+          document.getElementById('script-image').src = 'scripts/' + (script.thumbnail || 'placeholder.png');
+          document.getElementById('script-description').innerText = script.description;
+          if (script.features && script.features.length) {
+            const ul = document.createElement('ul');
+            script.features.forEach(feature => {
+              const li = document.createElement('li');
+              li.innerText = feature;
+              ul.appendChild(li);
+            });
+            document.getElementById('script-features').innerHTML = '<h4>Features:</h4>';
+            document.getElementById('script-features').appendChild(ul);
+          }
+        } else {
+          document.body.innerHTML = '<p>Script not found.</p>';
+        }
+      });
+  </script>
+</body>
+</html>
