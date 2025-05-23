@@ -15,3 +15,12 @@
     "featured": false
   }
 ]
+
+{
+  "title": "Fly Hack",
+  "description": "Fly freely in any direction.",
+  "category": "Utilities",
+  "file": "fly.lua",
+  "featured": false
+}
+
