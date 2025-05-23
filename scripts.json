@@ -1,0 +1,23 @@
+[
+  {
+    "title": "Auto Farm",
+    "description": "Automatically farms items in the game.",
+    "file": "auto-farm.lua",
+    "category": "utilities",
+    "featured": true
+  },
+  {
+    "title": "ESP Script",
+    "description": "Wallhack and player ESP.",
+    "file": "esp.lua",
+    "category": "utilities",
+    "featured": false
+  },
+  {
+    "title": "Fly Hack",
+    "description": "Enables flying in any game.",
+    "file": "fly.lua",
+    "category": "utilities",
+    "featured": false
+  }
+]
